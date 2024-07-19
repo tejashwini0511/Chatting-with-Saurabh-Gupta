@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MobiBox Users Acquisition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MobiBox Users Acquisition</h1>
+        <div id="api-data"></div>
+    </div>
+
+    <script>
+        const apiUrl = 'https://d3398n96t5wqx9.cloudfront.net/UsersAquisition/';
+        const encryptionKey = 'FtmJ7frzTyWOzintybbqIWzwwclcPtaI';
+        const accessToken = '0e186445-0647-417c-ae27-8098533f1914';
+        const campaignId = '6a0fa162-fb4c-4074-a6d4-402744e3590b';
+        const country = 'IRAQ';
+        const countryCode = '+964';
+
+        async function fetchApiData() {
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(getRequestBody())
+                });
+
+                const data = await response.json();
+                displayApiData(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function getRequestBody() {
+            // Implement request body creation logic here
+            // using the provided encryption key, campaign ID, country, and country code
+            return {};
+        }
+
+        function displayApiData(data) {
+            const apiDataElement = document.getElementById('api-data');
+            apiDataElement.innerHTML = `<p>API data: ${JSON.stringify(data)}</p>`;
+        }
+
+        fetchApiData();
+    </script>
+</body>
+</html>
